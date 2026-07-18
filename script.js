@@ -281,3 +281,53 @@ if (cursorDot && cursorOutline) {
     }, { duration: 500, fill: "forwards" });
   });
 }
+
+/* ---- AJAX CONTACT FORM SUBMISSION ---- */
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+const btnSend = document.getElementById('btn-send');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Change button text while sending
+    const originalBtnText = btnSend.textContent;
+    btnSend.textContent = 'Sending...';
+    btnSend.disabled = true;
+    formStatus.textContent = '';
+    
+    const formData = new FormData(contactForm);
+    
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        formStatus.textContent = 'Message sent successfully!';
+        formStatus.style.color = '#4CAF50'; // Green
+        contactForm.reset();
+      } else {
+        const data = await response.json();
+        if (Object.hasOwn(data, 'errors')) {
+          formStatus.textContent = data.errors.map(error => error.message).join(', ');
+        } else {
+          formStatus.textContent = 'Oops! There was a problem submitting your form.';
+        }
+        formStatus.style.color = '#F44336'; // Red
+      }
+    } catch (error) {
+      formStatus.textContent = 'Oops! There was a problem submitting your form.';
+      formStatus.style.color = '#F44336'; // Red
+    }
+    
+    // Reset button
+    btnSend.textContent = originalBtnText;
+    btnSend.disabled = false;
+  });
+}
