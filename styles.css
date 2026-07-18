@@ -1208,6 +1208,10 @@ select.form-input option {
   }
 
   /* SPACING REDUCTION FOR MOBILE */
+  .container {
+    padding: 0 1rem;
+  }
+
   .hero {
     padding: 7rem 1rem 2rem;
   }
