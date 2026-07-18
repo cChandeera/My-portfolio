@@ -199,3 +199,64 @@ styleEl.textContent = `
   .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 `;
 document.head.appendChild(styleEl);
+
+/* ---- DRAG TO SCROLL FOR GRIDS ---- */
+const scrollGrids = document.querySelectorAll('.skills-grid, .cert-grid, .projects-grid');
+
+scrollGrids.forEach(grid => {
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  grid.addEventListener('mousedown', (e) => {
+    isDown = true;
+    grid.style.cursor = 'grabbing';
+    startX = e.pageX - grid.offsetLeft;
+    scrollLeft = grid.scrollLeft;
+  });
+  grid.addEventListener('mouseleave', () => {
+    isDown = false;
+    grid.style.cursor = 'grab';
+  });
+  grid.addEventListener('mouseup', () => {
+    isDown = false;
+    grid.style.cursor = 'grab';
+  });
+  grid.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - grid.offsetLeft;
+    const walk = (x - startX) * 2; // scroll speed
+    grid.scrollLeft = scrollLeft - walk;
+  });
+  // Initialize cursor
+  grid.style.cursor = 'grab';
+});
+
+/* ---- CARD SLIDER HOVER EFFECT (PROJECTS & CERTIFICATES) ---- */
+document.querySelectorAll('.project-card, .cert-card').forEach(card => {
+  const slider = card.querySelector('.card-slider');
+  if (slider) {
+    const track = slider.querySelector('.slider-track');
+    const imgs = track.querySelectorAll('img');
+    let currentIndex = 0;
+    let interval;
+
+    if (imgs.length > 1) {
+      card.addEventListener('mouseenter', () => {
+        interval = setInterval(() => {
+          currentIndex++;
+          if (currentIndex >= imgs.length) currentIndex = 0;
+          track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }, 1500); // Image change speed (1.5 seconds)
+      });
+
+      card.addEventListener('mouseleave', () => {
+        clearInterval(interval);
+        // Optional: Reset to first image instantly, or leave it where it is
+        // track.style.transform = `translateX(0)`;
+        // currentIndex = 0;
+      });
+    }
+  }
+});
