@@ -1269,3 +1269,51 @@ select.form-input option {
     height: 1px;
   }
 }
+
+/* ============================
+   CUSTOM CURSOR
+   ============================ */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+}
+
+.custom-cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hide default cursor on desktop */
+@media (pointer: fine) {
+  body, a, button, select, input, textarea, .cert-card, .project-card, .scroll-btn {
+    cursor: none !important;
+  }
+}
+
+/* Disable custom cursor on mobile/touch devices */
+@media (max-width: 1024px) {
+  .custom-cursor-dot, .custom-cursor-outline {
+    display: none !important;
+  }
+  body, a, button, select, input, textarea, .cert-card, .project-card, .scroll-btn {
+    cursor: auto !important;
+  }
+}
