@@ -157,28 +157,6 @@ window.addEventListener('load', () => {
   animateSkillsIfVisible();
 });
 
-/* ---- CONTACT FORM ---- */
-const contactForm = document.getElementById('contact-form');
-contactForm.addEventListener('submit', e => {
-  e.preventDefault();
-  const btn = document.getElementById('btn-send');
-  btn.textContent = 'Sending...';
-  btn.disabled = true;
-
-  // Simulate sending (replace with real API / EmailJS later)
-  setTimeout(() => {
-    btn.textContent = '✓ Sent!';
-    btn.style.borderColor = '#22c55e';
-    btn.style.color = '#22c55e';
-    contactForm.reset();
-    setTimeout(() => {
-      btn.textContent = 'Send';
-      btn.disabled = false;
-      btn.style.borderColor = '';
-      btn.style.color = '';
-    }, 3000);
-  }, 1500);
-});
 
 /* ---- SMOOTH SCROLL for anchor links ---- */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
