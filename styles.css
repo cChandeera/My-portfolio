@@ -1207,6 +1207,19 @@ select.form-input option {
     display: none;
   }
 
+  /* SPACING REDUCTION FOR MOBILE */
+  .hero {
+    padding: 7rem 1rem 2rem;
+  }
+
+  .about, .certificates, .projects, .contact {
+    padding: 3.5rem 0;
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
   /* HERO */
   .hero-content {
     flex-direction: column-reverse;
