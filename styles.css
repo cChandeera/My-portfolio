@@ -1052,10 +1052,10 @@ select.form-input option {
 
 .btn-send {
   padding: .75rem 2.5rem;
-  background: var(--accent);
-  border: none;
+  background: transparent;
+  border: 1.5px solid var(--accent);
   border-radius: 6px;
-  color: #fff;
+  color: var(--accent);
   font-family: var(--font);
   font-size: .95rem;
   font-weight: 600;
@@ -1064,7 +1064,8 @@ select.form-input option {
 }
 
 .btn-send:hover {
-  background: var(--accent-hover);
+  background: var(--accent);
+  color: #ffffff;
   transform: translateY(-2px);
 }
 
