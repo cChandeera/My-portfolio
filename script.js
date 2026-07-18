@@ -244,10 +244,10 @@ const cursorDot = document.querySelector('.custom-cursor-dot');
 const cursorOutline = document.querySelector('.custom-cursor-outline');
 
 if (cursorDot && cursorOutline) {
-  window.addEventListener('mousemove', function(e) {
+  window.addEventListener('mousemove', function (e) {
     const posX = e.clientX;
     const posY = e.clientY;
-    
+
     // Dot follows exactly
     cursorDot.style.left = `${posX}px`;
     cursorDot.style.top = `${posY}px`;
@@ -266,17 +266,17 @@ const formStatus = document.getElementById('form-status');
 const btnSend = document.getElementById('btn-send');
 
 if (contactForm) {
-  contactForm.addEventListener('submit', async function(e) {
+  contactForm.addEventListener('submit', async function (e) {
     e.preventDefault();
-    
+
     // Change button text while sending
     const originalBtnText = btnSend.textContent;
     btnSend.textContent = 'Sending...';
     btnSend.disabled = true;
     formStatus.textContent = '';
-    
+
     const formData = new FormData(contactForm);
-    
+
     try {
       const response = await fetch(contactForm.action, {
         method: 'POST',
@@ -285,7 +285,7 @@ if (contactForm) {
           'Accept': 'application/json'
         }
       });
-      
+
       if (response.ok) {
         formStatus.textContent = 'Message sent successfully!';
         formStatus.style.color = '#4CAF50'; // Green
@@ -303,7 +303,7 @@ if (contactForm) {
       formStatus.textContent = 'Oops! There was a problem submitting your form.';
       formStatus.style.color = '#F44336'; // Red
     }
-    
+
     // Reset button
     btnSend.textContent = originalBtnText;
     btnSend.disabled = false;
