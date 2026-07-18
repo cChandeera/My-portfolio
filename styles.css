@@ -1291,6 +1291,11 @@ select.form-input option {
     padding-top: 0;
   }
 
+  /* SKILLS */
+  .skills-grid {
+    gap: 1.5rem;
+  }
+
   /* SCROLL CONTAINER — fix padding for arrow buttons */
   .scroll-container {
     padding: 0;
@@ -1374,10 +1379,14 @@ select.form-input option {
     display: none;
   }
 
-  /* Skills circles slightly smaller */
+  /* Skills circles smaller to fit 3 */
+  .skills-grid {
+    gap: 1rem;
+  }
+
   .skill-circle {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
   }
 
   .skill-icon-inner {
