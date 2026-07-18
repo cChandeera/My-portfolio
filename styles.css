@@ -1276,12 +1276,19 @@ select.form-input option {
   /* ABOUT */
   .about-content {
     flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
   }
 
   .about-image {
-    width: 180px;
-    height: 220px;
+    width: 240px;
+    height: 290px;
     margin: 0 auto;
+    transform: none;
+  }
+  
+  .about-text {
+    padding-top: 0;
   }
 
   /* SCROLL CONTAINER — fix padding for arrow buttons */
