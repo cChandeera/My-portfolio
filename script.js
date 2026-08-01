@@ -78,7 +78,7 @@ function updateActiveNav() {
 
 /* ---- TYPED TEXT EFFECT ---- */
 const typedEl = document.getElementById('typed-text');
-const phrases = ['Full Stack Developer'];
+const phrases = ['Full Stack Developer','Mobile App Developer','Problem Solver'];
 let pIndex = 0;
 let cIndex = 0;
 let deleting = false;
